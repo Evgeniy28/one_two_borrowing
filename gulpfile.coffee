@@ -30,7 +30,7 @@ gulp.task 'clean:dir', ->
 
 # build .scss files and minify .css
 gulp.task 'build:css', ->
-  gulp.src paths.scss + '*.scss'
+  gulp.src paths.scss + '*.sass'
     .pipe sass().on('error', sass.logError)
     .pipe postcss([ autoprefixer() ])
     .pipe gulp.dest paths.css
@@ -48,7 +48,7 @@ gulp.task 'build:html', ->
 
 # watch .scss and .pug files
 gulp.task 'watch', ->
-  gulp.watch paths.scss + '**/*.scss', ['build:css']
+  gulp.watch paths.scss + '**/*.sass', ['build:css']
   gulp.watch paths.pug + '**/*.pug', ['build:html']
 
 # minify html
