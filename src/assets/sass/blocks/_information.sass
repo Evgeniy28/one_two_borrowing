@@ -1,0 +1,50 @@
+.information
+  padding-top: 30px
+  padding-bottom: 18px
+  background-color: $project-orange
+
+  &__info
+    position: relative
+    padding-top: 110px
+    padding-bottom: 22px
+    font-size: 0.9375em
+    font-weight: $weight-bold
+    text-align: center
+    color: $white
+
+.passport-icon::before,
+.time-icon::before,
+.percent-icon::before,
+.call-icon::before
+  content: ''
+  position: absolute
+  top: 0
+  left: 50%
+  width: 106px
+  height: 105px
+  margin-left: -53px
+
+.passport-icon::before
+  background: url('../images/passport-icon.png') no-repeat
+
+.time-icon::before
+  background: url('../images/time-icon.png') no-repeat
+
+.percent-icon::before
+  background: url('../images/percent-icon.png') no-repeat
+
+.call-icon::before
+  background: url('../images/call-icon.png') no-repeat
+
+
+// tablet from 769px
+@media screen and (min-width: $tablet)
+  .information
+    &__info
+      font-size: 0.8125em
+
+// widescreen from 1192px
+@media screen and (min-width: $widescreen)
+  .information
+    &__info
+      font-size: 1.125em
