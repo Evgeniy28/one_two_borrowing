@@ -1,0 +1,28 @@
+{
+  "name": "one_two_borrowing",
+  "version": "0.1.0",
+  "description": "One-Two Borrowing LP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "gulp --require coffee-script/register",
+    "dev": "npm run gulp",
+    "build": "npm run dev build"
+  },
+  "author": "Evgeniy Azarov",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "coffee-script": "^1.12.6",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-connect": "^5.0.0",
+    "gulp-csso": "^3.0.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-pug": "^3.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "run-sequence": "^1.2.2"
+  }
+}

@@ -1,0 +1,5 @@
+# Ignore PSD files
+/_PSD
+
+/build
+/node_modules
