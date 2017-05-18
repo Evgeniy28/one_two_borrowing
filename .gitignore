@@ -3,3 +3,6 @@
 
 /build
 /node_modules
+.pug-lintrc
+.sass-lint.yml
+npm-debug.log
