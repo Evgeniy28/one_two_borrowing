@@ -1,0 +1,62 @@
+.footer
+  padding: 0
+  padding-top: 20px
+  background-color: $project-orange
+
+  // helper
+  +outline-red
+
+  &__logo,
+  &__info
+    text-align: center
+
+  &__logo
+    img
+      padding-bottom: 30px
+
+  &__info
+    p
+      padding-bottom: 12px
+      line-height: $size-5
+      color: $black
+
+  &__phone
+    position: relative
+    margin-bottom: 10px
+    padding-top: 55px
+    font-size: 1.4375em
+    font-weight: $weight-bold
+    text-align: center
+    color: $black
+
+    &::before
+      content: ''
+      position: absolute
+      top: 0
+      left: 50%
+      width: 37px
+      height: 37px
+      margin-left: -19px
+      background: url('../images/phone-icon.svg') no-repeat
+
+  &__btn
+    display: block
+    margin: 0 auto
+    font-size: 0.875em
+    font-weight: $weight-normal
+
+  &__email
+    display: block
+    margin-top: 15px
+    font-size: 0.875em
+    font-weight: $weight-normal
+    text-align: center
+    color: $black
+
+  &__copyright
+    padding-top: 28px
+    padding-bottom: 11px
+    font-size: 0.875em
+    text-align: center
+    color: $black
+    opacity: 0.43

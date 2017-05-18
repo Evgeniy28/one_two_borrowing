@@ -1,0 +1,48 @@
+=container
+  // helper
+  +outline-red
+  @media screen and (min-width: $tablet)
+    margin: 0 auto
+    max-width: 724px
+  @media screen and (min-width: $widescreen)
+    max-width: 1170px
+
+=flex-center
+  display: flex
+  justify-content: center
+  align-items: center
+
+// Outline helper
+=outline-blue
+  outline: 1px solid blue
+
+=outline-red
+  outline: 1px solid red
+
+=outline-yellow
+  outline: 1px solid yellow
+
+=outline-black
+  outline: 1px solid black
+
+.columns
+  // helper
+  +outline-blue
+
+.column
+  // helper
+  +outline-red
+
+// // Responsiveness
+//
+// // mobile to 768px
+// @media screen and (max-width: $tablet - 1px)
+//
+// // tablet from 769px
+// @media screen and (min-width: $tablet)
+//
+// // desktop from 1000px
+// @media screen and (min-width: $desktop)
+//
+// // widescreen from 1192px
+// @media screen and (min-width: $widescreen)
