@@ -13,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^7.1.1",
+    "bulma": "^0.4.1",
     "coffee-script": "^1.12.6",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
@@ -23,6 +24,7 @@
     "gulp-pug": "^3.3.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
+    "normalize-scss": "^7.0.0",
     "run-sequence": "^1.2.2"
   }
 }
