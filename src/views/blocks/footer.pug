@@ -1,17 +1,22 @@
 footer.section.footer
   div.container
     div.columns.is-gapless
-      div.column.footer__logo
-        img(src='assets/images/logo-bottom.png' width='128' height='44')
-      div.column.footer__info
-        p Займы предоставляются ООО МКК "Раз-Два Займ"
-        p Свидетельство в реестре МФО № 1603605007944
-        p ОГРН 1162536073996 ИНН 2521014623
-    div.columns.is-gapless
-      div.column.footer__callback
-        p.footer__phone 8 (423) 2-973-974
-        button.button.is-black.footer__btn(type='button') обратный звонок
-        a.footer__email(href='mailto:razdvazaim@inbox.ru') razdvazaim@inbox.ru
-    div.columns.is-gapless
       div.column
-        p.footer__copyright МКК «Раз-Два Займ» © 2015—2017 
+        div.footer__logo
+          img(src='assets/images/logo-bottom.png' width='128' height='44')
+        div.footer__info
+          p.is-mb-15 Займы предоставляются ООО МКК "Раз-Два Займ"
+          p Свидетельство в реестре МФО № 1603605007944
+          p ОГРН 1162536073996 ИНН 2521014623
+      div.column.is-flex-widescreen
+        div.footer__navigation.is-hidden-mobile.has-text-right
+          ul.footer__navigation-list
+            li.footer__navigation-link Наши офисы
+            li.footer__navigation-link Акции
+            li.footer__navigation-link О компании
+        div.footer__callback
+          p.footer__phone 8 (423) 2-973-974
+          button.button.is-black.footer__btn(type='button') обратный звонок
+          a.footer__email(href='mailto:razdvazaim@inbox.ru') razdvazaim@inbox.ru
+    div.footer__copyright
+        p.footer__copyright-text МКК «Раз-Два Займ» © 2015—2017 

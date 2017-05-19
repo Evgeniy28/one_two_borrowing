@@ -2,7 +2,6 @@
   padding: 0
   padding-top: 20px
   background-color: $project-orange
-
   // helper
   +outline-red
 
@@ -15,6 +14,7 @@
       padding-bottom: 30px
 
   &__info
+    margin-bottom: 23px
     p
       padding-bottom: 12px
       line-height: $size-5
@@ -28,15 +28,17 @@
     font-weight: $weight-bold
     text-align: center
     color: $black
+    // helper
+    +outline-red
 
     &::before
       content: ''
       position: absolute
       top: 0
-      left: 50%
+      right: 50%
       width: 37px
       height: 37px
-      margin-left: -19px
+      margin-right: -19px
       background: url('../images/phone-icon.svg') no-repeat
 
   &__btn
@@ -44,6 +46,8 @@
     margin: 0 auto
     font-size: 0.875em
     font-weight: $weight-normal
+    &:hover
+      background-color: $black-ter !important
 
   &__email
     display: block
@@ -54,9 +58,107 @@
     color: $black
 
   &__copyright
-    padding-top: 28px
-    padding-bottom: 11px
+    padding-top: 21px
+    padding-bottom: 23px
     font-size: 0.875em
     text-align: center
     color: $black
     opacity: 0.43
+
+
+// tablet from 769px
+@media screen and (min-width: $tablet)
+  .footer
+    &__logo,
+    &__info
+      text-align: left
+
+    &__logo
+      img
+        padding-bottom: 11px
+    &__info
+      margin-bottom: 0
+      p
+        padding-bottom: 0
+        font-size: 0.875em
+        line-height: $size-5
+      .is-mb-15
+        margin-bottom: 15px
+
+    &__phone
+      padding-top: 3px
+      font-size: $size-5
+      font-weight: $weight-normal
+      text-align: right
+      &::before
+        right: 187px
+        width: 25px
+        height: 25px
+        margin-right: 0
+        background: url('../images/phone-small-icon.svg') no-repeat
+
+    &__btn
+      margin-right: 0
+      margin-left: auto
+
+    &__email
+      text-align: right
+      color: #96490e
+
+    &__navigation
+      margin-bottom: 15px
+      // helper
+      +outline-blue
+
+    &__navigation-list
+      display: flex
+      justify-content: flex-end
+      flex-wrap: wrap
+      // helper
+      +outline-red
+
+    &__navigation-link
+      position: relative
+      margin-right: 25px
+      padding-right: 16px
+      font-size: 0.875em
+      text-decoration: underline
+      color: $black
+      &:last-child
+        margin-right: 0
+
+      &:hover
+        cursor: pointer
+        text-decoration: none
+
+      &::before
+        content: ''
+        position: absolute
+        top: 50%
+        right: 0
+        width: 8px
+        height: 5px
+        background: url('../images/arrow-nav-bottom.svg') no-repeat
+
+
+// widescreen from 1192px
+@media screen and (min-width: $widescreen)
+  .footer
+    &__logo,
+    &__info,
+      display: inline-block
+      vertical-align: top
+    &__logo
+      img
+        margin-right: 50px
+
+    .is-flex-widescreen
+      justify-content: space-between
+
+    &__phone
+      margin-bottom: 20px
+
+    &__email
+      position: absolute
+      top: 28px
+      left: 50%
