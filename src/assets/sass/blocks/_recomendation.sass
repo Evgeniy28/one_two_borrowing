@@ -1,0 +1,117 @@
+.recomendation
+  padding-top: 30px
+  padding-bottom: 16px
+
+  &__title
+    margin-bottom: 28px
+    font-size: 1.3125em
+    font-weight: $weight-bold
+    text-align: center
+    color: $black-ter
+
+  &__text
+    margin-bottom: 28px
+    font-size: 1.125em
+    text-align: center
+    color: $black-ter
+
+  &__btn
+    width: 100%
+    margin-bottom: 12px
+    font-size: 1.125em
+    font-weight: $weight-bold
+    color: $white
+    border-radius: $radius
+    border: none
+    outline: none
+    transition: all .1s ease-in-out
+
+    &--orange
+      background-color: $project-orange
+      box-shadow: 0 -2px #cc6605 inset
+      &:hover
+        color: $white
+        background-color: #cc6605
+
+    &--green
+      background-color: #22aa35
+      box-shadow: 0 -2px #126f20 inset
+      &:hover
+        color: $white
+        background-color: #126f20
+
+  &__legend
+    display: block
+    font-size: $size-7
+    text-align: center
+    color: $grey
+
+.slider
+  margin-bottom: 15px
+  padding-top: 40px
+  // helper
+  +outline-red
+  &__pagination
+    +flex-center
+
+  &__pagination-list
+    display: flex
+    width: 229px
+    margin-bottom: 20px
+    // helper
+    +outline-red
+
+  &__pagination-link
+    width: 52px
+    height: 3px
+    margin-right: 7px
+    background-color: $grey-light
+    // helper
+    +outline-blue
+
+    &:last-child
+      margin-right: 0
+
+    &:hover
+      cursor: pointer
+
+  &__img
+    display: flex
+    justify-content: center
+    // helper
+    +outline-blue
+
+.is-active-slide
+  background-color: $project-orange
+
+
+
+// tablet from 769px
+@media screen and (min-width: $tablet)
+  .is-pb-30-tablet
+    padding-bottom: 30px
+    font-size: $size-5
+
+  .recomendation
+    &__title
+      font-size: 1.625em
+    &__text
+      margin-bottom: 0
+      font-size: $size-5
+
+    &__btn
+      width: 280px
+      margin-bottom: 0
+
+      &--orange
+        margin-right: 20px
+
+  .button-wrapper
+    +flex-center
+    margin-bottom: 20px
+
+// widescreen from 1192px
+@media screen and (min-width: $widescreen)
+  .recomendation
+    &__title
+      font-size: 1.875em
