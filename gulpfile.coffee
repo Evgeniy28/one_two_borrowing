@@ -7,12 +7,15 @@ autoprefixer = require 'autoprefixer'
 rename       = require 'gulp-rename'
 csso         = require 'gulp-csso'
 htmlmin      = require 'gulp-htmlmin'
+uglify       = require 'gulp-uglify'
 clean        = require 'gulp-clean'
 run          = require 'run-sequence'
 
 paths =
   scss: './src/assets/sass/'
   css: './build/assets/css/'
+  src_js: './src/assets/js/'
+  js: './build/assets/js/'
   pug: './src/views/'
   html: './build/'
 
@@ -50,12 +53,21 @@ gulp.task 'build:html', ->
 gulp.task 'watch', ->
   gulp.watch paths.scss + '**/*.sass', ['build:css']
   gulp.watch paths.pug + '**/*.pug', ['build:html']
+  gulp.watch paths.src_js + '**/*.js', ['minify:js']
 
 # minify html
 gulp.task 'minify:html', ->
   gulp.src paths.html + '*.html'
   	.pipe htmlmin collapseWhitespace: true
     .pipe gulp.dest paths.html
+
+# minify js
+gulp.task 'minify:js', ->
+  gulp.src paths.src_js + '*.js'
+  	.pipe do uglify
+    .pipe rename suffix: '.min'
+    .pipe gulp.dest paths.js
+    .pipe do connect.reload
 
 # copy files
 gulp.task 'copy:files', ->
@@ -67,12 +79,19 @@ gulp.task 'copy:normalize', ->
   gulp.src './node_modules/normalize.css/normalize.css'
     .pipe gulp.dest paths.css
 
+# copy jquery.min.js
+gulp.task 'copy:jquery', ->
+  gulp.src './node_modules/jquery/dist/jquery.min.js'
+    .pipe gulp.dest paths.js
+
 # Development
 gulp.task 'default', (fn) ->
   run 'clean:dir',
       'copy:files',
       'copy:normalize',
+      'copy:jquery',
       'build:css',
+      'minify:js',
       'build:html',
       'connect',
       'watch', fn
@@ -83,7 +102,9 @@ gulp.task 'build', (fn) ->
   run 'clean:dir',
       'copy:files',
       'copy:normalize',
+      'copy:jquery',
       'build:css',
+      'minify:js',
       'build:html',
       'minify:html', fn
   return
