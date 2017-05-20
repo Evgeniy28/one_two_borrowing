@@ -57,9 +57,22 @@ gulp.task 'minify:html', ->
   	.pipe htmlmin collapseWhitespace: true
     .pipe gulp.dest paths.html
 
+# copy files
+gulp.task 'copy:files', ->
+  gulp.src ['./src/assets/fonts/**', './src/assets/images/**'], base: './src'
+    .pipe gulp.dest paths.html
+
+# copy normalize.css
+gulp.task 'copy:normalize', ->
+  gulp.src './node_modules/normalize.css/normalize.css'
+    .pipe gulp.dest paths.css
+
 # Development
 gulp.task 'default', (fn) ->
-  run 'build:css',
+  run 'clean:dir',
+      'copy:files',
+      'copy:normalize',
+      'build:css',
       'build:html',
       'connect',
       'watch', fn
@@ -68,6 +81,8 @@ gulp.task 'default', (fn) ->
 # Production
 gulp.task 'build', (fn) ->
   run 'clean:dir',
+      'copy:files',
+      'copy:normalize',
       'build:css',
       'build:html',
       'minify:html', fn
