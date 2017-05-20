@@ -57,13 +57,15 @@
     text-align: center
     color: $black
 
-  &__copyright
+  &__copyright-text
     padding-top: 21px
     padding-bottom: 23px
     font-size: 0.875em
     text-align: center
     color: $black
     opacity: 0.43
+    // helper
+    +outline-blue
 
 
 // tablet from 769px
@@ -140,6 +142,59 @@
         height: 5px
         background: url('../images/arrow-nav-bottom.svg') no-repeat
 
+    &__copyright
+      min-height: 40px
+      margin-top: 11px
+      background-color: #22aa35
+
+    &__copyright-text
+      display: flex
+      align-items: center
+      padding-top: 0
+      padding-bottom: 0
+      opacity: 1
+
+    &__copyright-wrapper
+      +container
+      display: flex
+      justify-content: space-between
+
+  .one-pixel
+    display: flex
+    justify-content: flex-end
+
+    &__text
+      display: flex
+      align-items: center
+      margin-right: 20px
+      font-size: 0.875em
+      color: $black
+      // helper
+      +outline-blue
+
+  .go-top-btn
+    position: relative
+    width: 49px
+    height: 40px
+    background-color: #258232
+    opacity: 0.6
+    border: none
+    outline: none
+    cursor: pointer
+
+    &:hover
+      opacity: 0.8
+
+    &::before
+      content: ''
+      position: absolute
+      top: 50%
+      right: 50%
+      width: 11px
+      height: 6px
+      margin-top: -3px
+      margin-right: -5px
+      background: url('../images/arrow-top.svg') no-repeat
 
 // widescreen from 1192px
 @media screen and (min-width: $widescreen)
@@ -162,3 +217,6 @@
       position: absolute
       top: 28px
       left: 50%
+
+    &__copyright
+      margin-top: 40px
