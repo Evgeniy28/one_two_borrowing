@@ -108,4 +108,52 @@ $(document).ready(function() {
       $('.customer-form').addClass('modal-error');
     }
   });
+
+  /// Scroll Reveal ///
+  var bottom, bottomFast, top;
+  window.sr = ScrollReveal();
+
+  top = {
+    origin: 'top',
+    distance: '24px',
+    duration: 1500,
+    scale: 1.05
+  };
+
+  bottom = {
+    origin: 'bottom',
+    distance: '64px',
+    duration: 900,
+    delay: 1500,
+    scale: 1
+  };
+
+  bottomFast = {
+    origin: 'bottom',
+    distance: '32px',
+    duration: 600,
+    delay: 800,
+    scale: 0.9
+  };
+
+  // Header
+  sr.reveal('.header__title', top);
+  sr.reveal('.header__btn', top);
+
+  // Information
+  sr.reveal('.passport-icon', bottomFast);
+  sr.reveal('.time-icon', bottomFast);
+  sr.reveal('.percent-icon', bottomFast);
+  sr.reveal('.call-icon', bottomFast);
+
+  // Recomendation
+  sr.reveal('.recomendation__title', top);
+  sr.reveal('.recomendation__text', bottomFast);
+  sr.reveal('.slider', bottomFast);
+  sr.reveal('.button-wrapper', bottomFast);
+
+  // About company
+  sr.reveal('.about-company__title', top);
+  sr.reveal('.about-company__info', bottomFast);
+  sr.reveal('.about-company__btn', bottomFast);
 });
