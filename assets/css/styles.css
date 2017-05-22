@@ -5091,6 +5091,9 @@ p {
 .success-text {
   color: #23d160 !important; }
 
+.none-js {
+  display: none !important; }
+
 .header {
   position: relative;
   padding-top: 15px;
@@ -5529,6 +5532,128 @@ p {
   .recomendation__title {
     font-size: 1.875em; } }
 
+.offices {
+  padding: 0;
+  padding-top: 24px; }
+  .offices__title {
+    padding-bottom: 26px;
+    font-size: 1.3125em;
+    font-weight: 700;
+    text-align: center;
+    color: #242424; }
+  .offices__links {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-bottom: 28px;
+    color: #7a7a7a; }
+    .offices__links .lenina-squire {
+      margin-right: 26px; }
+    .offices__links .lenina-squire,
+    .offices__links .october {
+      position: relative;
+      padding-bottom: 9px;
+      cursor: pointer; }
+    .offices__links .lenina-squire:after,
+    .offices__links .october::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 94px;
+      height: 2px;
+      margin-left: -47px;
+      background-color: #dbdbdb; }
+    .offices__links .is-active-office {
+      color: #242424; }
+      .offices__links .is-active-office::after {
+        height: 3px;
+        background-color: #ff7c00; }
+
+.map {
+  background: #e9e5dc url("../images/map1.png") no-repeat;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer; }
+
+#yandex-map1,
+#yandex-map2 {
+  display: none;
+  height: inherit; }
+
+.visible-phone {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.map-mark {
+  padding: 25px 0 25px 18px;
+  font-family: "Etelka", "Helvetica Neue", "Helvetica", "Arial", sans-serif; }
+  .map-mark__adress {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 300;
+    color: #737373;
+    text-align: center; }
+  .map-mark__phone {
+    margin: 0;
+    font-weight: 500;
+    color: #242424;
+    text-align: center; }
+  .map-mark__button {
+    display: block;
+    width: 211px;
+    height: 49px;
+    margin: 0 auto;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 2px;
+    background-color: #ff7c00;
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out; }
+    .map-mark__button:hover {
+      background-color: #cc6300; }
+
+@media screen and (min-width: 769px) {
+  .offices__title {
+    padding-bottom: 49px;
+    font-size: 1.625em; }
+  .offices__links {
+    margin-bottom: 40px;
+    font-size: 1.5rem; }
+    .offices__links .lenina-squire {
+      margin-right: 79px; }
+    .offices__links .lenina-squire,
+    .offices__links .october {
+      padding-bottom: 14px; }
+    .offices__links .lenina-squire:after,
+    .offices__links .october::after {
+      width: 140px;
+      margin-left: -70px; }
+  .map {
+    height: 500px; }
+  .visible-phone {
+    display: none; }
+  #yandex-map1,
+  #yandex-map2 {
+    display: block; } }
+
+@media screen and (min-width: 1192px) {
+  .offices {
+    padding-top: 57px; }
+    .offices__title {
+      font-size: 1.875em; } }
+
 .about-company {
   padding-top: 24px;
   padding-bottom: 36px; }
@@ -5579,7 +5704,10 @@ p {
 
 @media screen and (min-width: 769px) {
   .about-company {
+    padding-top: 43px;
     padding-bottom: 70px; }
+    .about-company__title {
+      font-size: 1.625em; }
     .about-company__info {
       padding-right: 20px;
       font-size: 1.25rem; }
@@ -5590,6 +5718,8 @@ p {
       font-size: 1.0625em; } }
 
 @media screen and (min-width: 1192px) {
+  .about-company__title {
+    font-size: 1.875em; }
   .about-company__wrapper {
     width: 770px;
     margin-right: auto !important;
