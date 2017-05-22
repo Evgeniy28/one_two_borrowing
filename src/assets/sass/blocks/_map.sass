@@ -1,0 +1,139 @@
+.offices
+  padding: 0
+  padding-top: 24px
+  // helper
+  +outline-red
+
+  &__title
+    padding-bottom: 26px
+    font-size: 1.3125em
+    font-weight: $weight-bold
+    text-align: center
+    color: $black-ter
+    // helper
+    +outline-red
+
+  &__links
+    display: flex
+    justify-content: center
+    margin-bottom: 28px
+    color: $grey
+
+    .lenina-squire
+      margin-right: 26px
+
+    .lenina-squire,
+    .october
+      position: relative
+      padding-bottom: 9px
+      cursor: pointer
+
+    .lenina-squire:after,
+    .october::after
+      content: ''
+      position: absolute
+      bottom: 0
+      left: 50%
+      width: 94px
+      height: 2px
+      margin-left: -47px
+      background-color: $grey-lighter
+
+    .is-active-office
+      color: $black-ter
+      &::after
+        height: 3px
+        background-color: $project-orange
+
+.map
+  background: #e9e5dc url('../images/map1.png') no-repeat
+  background-position: center
+  background-size: cover
+  cursor: pointer
+  // helper
+  +outline-red
+
+#yandex-map1,
+#yandex-map2
+  display: none
+  height: inherit
+
+.visible-phone
+  display: flex
+  justify-content: center
+  align-items: center
+
+.map-mark
+  padding: 25px 0 25px 18px
+  font-family: $family-primary
+
+  &__adress
+    margin: 0
+    margin-bottom: 20px
+    font-size: 18px
+    font-weight: 300
+    color: #737373
+    text-align: center
+
+  &__phone
+    margin: 0
+    // font-size: $h1-font-size
+    font-weight: 500
+    color: #242424
+    text-align: center
+
+  &__button
+    display: block
+    width: 211px
+    height: 49px
+    margin: 0 auto
+    font-size: 18px
+    font-weight: 400
+    border-radius: 2px
+    background-color: $project-orange
+    transition: all 0.1s ease-in-out
+
+    &:hover
+      background-color: darken($project-orange, 10%)
+
+
+// tablet from 769px
+@media screen and (min-width: $tablet)
+  .offices
+    &__title
+      padding-bottom: 49px
+      font-size: 1.625em
+
+    &__links
+      margin-bottom: 40px
+      font-size: $size-4
+
+      .lenina-squire
+        margin-right: 79px
+
+      .lenina-squire,
+      .october
+        padding-bottom: 14px
+
+      .lenina-squire:after,
+      .october::after
+        width: 140px
+        margin-left: -70px
+
+  .map
+    height: 500px
+
+  .visible-phone
+    display: none
+
+  #yandex-map1,
+  #yandex-map2
+    display: block
+
+// widescreen from 1192px
+@media screen and (min-width: $widescreen)
+  .offices
+    padding-top: 57px
+
+    &__title
+      font-size: 1.875em

@@ -16,6 +16,9 @@ $(function() {
 
   // Go section header
   scrollToSection('.go-top-btn', '.header');
+
+  // Go section offices
+  scrollToSection('.go-offices', '.offices');
 });
 
 $(function() {
@@ -310,5 +313,105 @@ $(function() {
 
     },
     transitionEnd: function(index, element) {}
+  });
+});
+
+/// MAPS SECTION ///
+$(function() {
+  function watchOfficeMap(currentButton, currentOfficeId, currentMap, otherButton, otherOfficeId, otherMap) {
+    $(currentButton).on('click', function(e) {
+      e.preventDefault();
+
+      $('.offices__links ' + currentButton).addClass('is-active-office');
+      $('.offices__links ' + otherButton).removeClass('is-active-office');
+
+      $(currentOfficeId).removeClass('none-js');
+      $(otherOfficeId).addClass('none-js');
+
+      $(currentMap).removeClass('none-js');
+      $(otherMap).addClass('none-js');
+    });
+  };
+  watchOfficeMap('.lenina-squire', '#office1', '#yandex-map1','.october', '#office2', '#yandex-map2');
+  watchOfficeMap('.october', '#office2', '#yandex-map2','.lenina-squire', '#office1', '#yandex-map1');
+
+  ymaps.ready(function () {
+    var map1 = new ymaps.Map('yandex-map1', {
+      center: [43.355302, 132.179872],
+      zoom: 18
+    }, {
+      searchControlProvider: 'yandex#search'
+    });
+
+    var map2 = new ymaps.Map('yandex-map2', {
+      center: [43.354305, 132.186286],
+      zoom: 18
+    }, {
+      searchControlProvider: 'yandex#search'
+    });
+
+    // Создание макета содержимого балуна.
+    BalloonContentLayout = ymaps.templateLayoutFactory.createClass(
+      '<div class="map-mark">' +
+        '<div class="map-mark__wrapper">' +
+          '<p class="map-mark__adress">{{ properties.address }}</p>' +
+          '<p class="map-mark__description">{{ properties.description }}</p>' +
+          '<p class="map-mark__phone">{{ properties.phone }}</p>' +
+          '<button class="button map-mark__button call-me-office" type="button">Перезвоните мне</button>' +
+        '</div>' +
+      '</div>',
+      {
+        // Переопределяем функцию build, чтобы при создании макета начинать
+        // слушать событие click на кнопке.
+        build: function () {
+          // Сначала вызываем метод build родительского класса.
+          BalloonContentLayout.superclass.build.call(this);
+          // А затем выполняем дополнительные действия.
+          $('.call-me-office').bind('click', this.openModalFromMap);
+        },
+
+        // Аналогично переопределяем функцию clear, чтобы снять
+        // прослушивание клика при удалении макета с карты.
+        clear: function () {
+          // Выполняем действия в обратном порядке - сначала снимаем слушателя,
+          // а потом вызываем метод clear родительского класса.
+          $('.call-me-office').unbind('click', this.openModalFromMap);
+          BalloonContentLayout.superclass.clear.call(this);
+        },
+
+        openModalFromMap: function (e) {
+          e.preventDefault();
+          $('.modal').addClass('is-active');
+          $('.form-for-me').addClass('is-form-show');
+        }
+      }
+    );
+
+    var placemark1 = new ymaps.Placemark(map1.getCenter(),
+      {
+        address: 'г. Артём, площадь Ленина, 2',
+        description: 'ГУМ, вход с торца, напротив "Кошелки"!',
+        phone: '8-904-627-3974'
+      }, {
+        balloonContentLayout: BalloonContentLayout,
+        balloonPanelMaxMapArea: 0,
+        preset: 'islands#blueDotIcon',
+        iconColor: '#28aa3a'
+    });
+
+    var placemark2 = new ymaps.Placemark(map2.getCenter(),
+      {
+        address: 'г. Артём, ул. Октябрьская, д. 4а',
+        description: 'Центральная автобусная остановка, "Садильник", в одном здании с салоном Yota!',
+        phone: '8-904-627-3974'
+      }, {
+        balloonContentLayout: BalloonContentLayout,
+        balloonPanelMaxMapArea: 0,
+        preset: 'islands#blueDotIcon',
+        iconColor: '#28aa3a'
+    });
+
+    map1.geoObjects.add(placemark1);
+    map2.geoObjects.add(placemark2);
   });
 });
