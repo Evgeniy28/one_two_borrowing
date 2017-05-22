@@ -46,22 +46,17 @@
     text-align: center
     color: $grey
 
-.slider
-  margin-bottom: 15px
-  padding-top: 40px
-  // helper
-  +outline-red
-  &__pagination
-    +flex-center
+.slider-pagination
+  +flex-center
+  margin-top: 30px
 
-  &__pagination-list
+  &__list
     display: flex
     width: 229px
-    margin-bottom: 20px
     // helper
     +outline-red
 
-  &__pagination-link
+  &__link
     width: 52px
     height: 3px
     margin-right: 7px
@@ -72,8 +67,11 @@
     &:last-child
       margin-right: 0
 
-    &:hover
-      cursor: pointer
+.slider
+  margin-bottom: 15px
+  padding-top: 20px
+  // helper
+  +outline-red
 
   &__img
     display: flex
@@ -81,10 +79,28 @@
     // helper
     +outline-blue
 
+    &:hover
+      cursor: pointer
+
+  &__img-wrapper
+    +clearfix
+
 .is-active-slide
   background-color: $project-orange
 
+.swipe
+  overflow: hidden
+  visibility: hidden
+  position: relative
 
+.swipe-wrap
+  overflow: hidden
+  position: relative
+
+.swipe-wrap > div
+  float: left
+  width: 100%
+  position: relative
 
 // tablet from 769px
 @media screen and (min-width: $tablet)

@@ -230,8 +230,8 @@ $(function() {
   });
 });
 
+/// Scroll Reveal ///
 $(function() {
-  /// Scroll Reveal ///
   var bottom, bottomFast, top;
   window.sr = ScrollReveal();
 
@@ -281,4 +281,34 @@ $(function() {
   sr.reveal('.about-company__title', top);
   sr.reveal('.about-company__info', bottomFast);
   sr.reveal('.about-company__btn', bottomFast);
+});
+
+/// Swipe slider ///
+$(function() {
+  var element = document.getElementById('slider');
+  window.mySwipe = new Swipe(element, {
+    startSlide: 0,
+    auto: 3000,
+    draggable: true,
+    autoRestart: true,
+    continuous: true,
+    disableScroll: true,
+    stopPropagation: true,
+    callback: function(index, element) {
+
+      function isActive(indexElement) {
+        var paginationList = document.querySelector('.slider-pagination .slider-pagination__list');
+        if (indexElement == 0) {
+          paginationList.children[indexElement].classList.add('is-active-slide');
+          paginationList.children[3].classList.remove('is-active-slide');
+        } else {
+          paginationList.children[indexElement].classList.add('is-active-slide');
+          paginationList.children[indexElement - 1].classList.remove('is-active-slide');
+        }
+      };
+      isActive(index);
+
+    },
+    transitionEnd: function(index, element) {}
+  });
 });
