@@ -1,30 +1,32 @@
 div.modal
   div.modal-background
     div.form-for-me
-      form.modal-form
+      form.modal-form(action='form.php' method='post')
         button.modal-close.modal-form__close(type='button')
         p.modal-form__title 
           | Оставьте свои данные и мы
           br
           | перезвоним в течение 15 минут
+        div.form-errors
         input(type='text' name='name' placeholder='ФИО')
         input(type='tel' name='tel' placeholder='Номер телефона')
         div.modal-form__checkbox
           input(type='checkbox' name='checkbox')
-          span На обработку персональных данных согласен
+          span.modal-form__checkbox-text На обработку персональных данных согласен
         button.button.modal-form__btn.modal-form__btn--green(type='submit') Оформить заявку
 
     div.form-for-friend
-      form.modal-form
+      form.modal-form(action='form_for_friend.php' method='post')
         button.modal-close.modal-form__close(type='button')
         p.modal-form__title 
           | Оставьте данные друга и мы
           br
           | перезвоним ему в течение 15 минут
+        div.form-errors
         input(type='text' name='name' placeholder='ФИО друга')
         input(type='tel' name='tel' placeholder='Номер телефона друга')
         input(type='text' name='your_name' placeholder='Ваше ФИО')
         div.modal-form__checkbox
           input(type='checkbox' name='checkbox')
-          span На обработку персональных данных согласен
+          span.modal-form__checkbox-text На обработку персональных данных согласен
         button.button.modal-form__btn.modal-form__btn--green(type='submit') Оформить заявку

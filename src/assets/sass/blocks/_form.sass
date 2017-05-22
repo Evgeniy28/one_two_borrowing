@@ -16,8 +16,7 @@
     margin-bottom: 20px
     padding-left: 23px
     border-radius: $radius
-    background-color: $white
-    border: none
+    border: 1px solid $white
     outline: none
 
     &::placeholder
@@ -28,19 +27,17 @@
 
   &__checkbox
     margin-bottom: 30px
-
     // helper
     +outline-blue
 
-    span
-      padding-left: 18px
-      color: $white
+  &__checkbox-text
+    padding-left: 18px
+    color: $white
 
   &__btn
     width: 100%
     &:hover
       background-color: $black-ter !important
-
 
 // tablet from 769px
 @media screen and (min-width: $tablet)
