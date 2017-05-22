@@ -101,6 +101,11 @@ gulp.task 'copy:send_mail', ->
     .pipe gulp.dest paths.html
     .pipe do connect.reload
 
+# copy swipe.min.js
+gulp.task 'copy:swipe', ->
+  gulp.src './node_modules/swipejs/build/swipe.min.js'
+    .pipe gulp.dest paths.js
+
 # Development
 gulp.task 'default', (fn) ->
   run 'clean:dir',
@@ -110,6 +115,7 @@ gulp.task 'default', (fn) ->
       'copy:send_mail',
       'copy:jquery-mask',
       'copy:scrollreveal',
+      'copy:swipe',
       'build:css',
       'minify:js',
       'build:html',
@@ -126,6 +132,7 @@ gulp.task 'build', (fn) ->
       'copy:send_mail',
       'copy:jquery-mask',
       'copy:scrollreveal',
+      'copy:swipe',
       'build:css',
       'minify:js',
       'build:html',
