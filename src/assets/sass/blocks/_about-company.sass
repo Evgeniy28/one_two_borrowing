@@ -60,7 +60,11 @@
 // tablet from 769px
 @media screen and (min-width: $tablet)
   .about-company
+    padding-top: 43px
     padding-bottom: 70px
+
+    &__title
+      font-size: 1.625em
 
     &__info
       padding-right: 20px
@@ -75,6 +79,9 @@
 // widescreen from 1192px
 @media screen and (min-width: $widescreen)
   .about-company
+    &__title
+      font-size: 1.875em
+
     &__wrapper
       width: 770px
       margin-right: auto !important
