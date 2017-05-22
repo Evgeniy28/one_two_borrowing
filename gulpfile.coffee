@@ -54,6 +54,7 @@ gulp.task 'watch', ->
   gulp.watch paths.scss + '**/*.sass', ['build:css']
   gulp.watch paths.pug + '**/*.pug', ['build:html']
   gulp.watch paths.src_js + '**/*.js', ['minify:js']
+  gulp.watch './src/*.php', ['copy:send_mail']
 
 # minify html
 gulp.task 'minify:html', ->
@@ -84,12 +85,31 @@ gulp.task 'copy:jquery', ->
   gulp.src './node_modules/jquery/dist/jquery.min.js'
     .pipe gulp.dest paths.js
 
+# copy jquery.mask.min.js
+gulp.task 'copy:jquery-mask', ->
+  gulp.src './node_modules/jquery-mask-plugin/dist/jquery.mask.min.js'
+    .pipe gulp.dest paths.js
+
+# copy scrollreveal.min.js
+gulp.task 'copy:scrollreveal', ->
+  gulp.src './node_modules/scrollreveal/dist/scrollreveal.min.js'
+    .pipe gulp.dest paths.js
+
+# copy send_mail.php
+gulp.task 'copy:send_mail', ->
+  gulp.src './src/*.php'
+    .pipe gulp.dest paths.html
+    .pipe do connect.reload
+
 # Development
 gulp.task 'default', (fn) ->
   run 'clean:dir',
       'copy:files',
       'copy:normalize',
       'copy:jquery',
+      'copy:send_mail',
+      'copy:jquery-mask',
+      'copy:scrollreveal',
       'build:css',
       'minify:js',
       'build:html',
@@ -103,6 +123,9 @@ gulp.task 'build', (fn) ->
       'copy:files',
       'copy:normalize',
       'copy:jquery',
+      'copy:send_mail',
+      'copy:jquery-mask',
+      'copy:scrollreveal',
       'build:css',
       'minify:js',
       'build:html',
