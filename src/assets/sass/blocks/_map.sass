@@ -124,8 +124,23 @@
 @media screen and (min-width: $tablet)
   .offices
     &__title
+      position: relative
+      width: 360px
+      margin: 0 auto
       padding-bottom: 49px
       font-size: 1.625em
+      &::before,
+      &::after
+        content: ''
+        position: absolute
+        top: 13px
+        width: 700px
+        height: 1px
+        background-color: #c5c8c7
+      &::before
+        right: -735px
+      &::after
+        left: -735px
 
     &__links
       margin-bottom: 40px
@@ -160,3 +175,7 @@
 
     &__title
       font-size: 1.875em
+      &::before
+        right: -730px
+      &::after
+        left: -730px

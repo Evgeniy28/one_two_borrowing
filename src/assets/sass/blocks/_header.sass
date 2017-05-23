@@ -172,9 +172,31 @@
 @media screen and (min-width: $widescreen)
   .header
     &__wrapper
-      margin-bottom: 67px
+      position: relative
+      margin-bottom: 93px
+
+      &::after
+        content: ''
+        position: absolute
+        right: -135px
+        bottom: -215px
+        width: 332px
+        height: 235px
+        background: url('../images/header-man.png') no-repeat
 
     &__title
+      position: relative
+      z-index: 11
+
+      &::after
+        content: ''
+        position: absolute
+        left: 50px
+        bottom: -40px
+        width: 180px
+        height: 141px
+        background: url('../images/header-lists.png') no-repeat
+
       font-size: 38px
       span
         font-size: 60px

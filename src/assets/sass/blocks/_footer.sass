@@ -71,6 +71,21 @@
 // tablet from 769px
 @media screen and (min-width: $tablet)
   .footer
+    position: relative
+
+    &::before
+      content: ''
+      position: absolute
+      right: 0
+      top: -150px
+      width: 1601px
+      height: 328px
+      z-index: 5
+
+      background-image: url('../images/bg-bottom-tablet.png')
+      background-repeat: no-repeat
+      background-position-x: 200px
+
     &__logo,
     &__info
       text-align: left
@@ -199,6 +214,22 @@
 // widescreen from 1192px
 @media screen and (min-width: $widescreen)
   .footer
+    &::before
+      width: 1920px
+      height: 290px
+      background: url('../images/bg-bottom-desktop.png') no-repeat
+      background-position-x: 0
+
+    &::after
+      z-index: 10
+      content: ''
+      position: absolute
+      right: 25px
+      top: -185px
+      width: 104px
+      height: 87px
+      background: url('../images/bottom-lists-right.png') no-repeat
+
     &__logo,
     &__info,
       display: inline-block
@@ -206,6 +237,18 @@
     &__logo
       img
         margin-right: 50px
+
+    &__info
+      position: relative
+
+      &::before
+        content: ''
+        position: absolute
+        top: -92px
+        left: 0
+        width: 124px
+        height: 87px
+        background: url('../images/bottom-lists-left.png') no-repeat
 
     .is-flex-widescreen
       justify-content: space-between

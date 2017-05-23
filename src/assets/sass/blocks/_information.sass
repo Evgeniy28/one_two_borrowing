@@ -40,11 +40,35 @@
 // tablet from 769px
 @media screen and (min-width: $tablet)
   .information
+    position: relative
+    padding-top: 15px
+    padding-bottom: 0
+
+    &::before
+      z-index: 10
+      content: ''
+      position: absolute
+      left: 0px
+      top: -109px
+      width: 1192px
+      height: 433px
+      background: url('../images/bg-info-form-tablet.png') no-repeat
+
     &__info
+      padding-bottom: 15px
       font-size: 0.8125em
 
 // widescreen from 1192px
 @media screen and (min-width: $widescreen)
   .information
+    &::before
+      content: ''
+      position: absolute
+      left: 0px
+      top: -161px
+      width: 1920px
+      height: 459px
+      background: url('../images/bg-info-form-desktop.png') no-repeat
+
     &__info
       font-size: 1.125em

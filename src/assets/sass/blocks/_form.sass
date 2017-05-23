@@ -36,6 +36,7 @@
 
   &__btn
     width: 100%
+    height: 39px
     &:hover
       background-color: $black-ter !important
 
@@ -51,7 +52,6 @@
   .customer-form
     display: flex
     justify-content: center
-    align-items: center
     flex-wrap: wrap
 
     &__checkbox
@@ -70,14 +70,30 @@
 
 // widescreen from 1192px
 @media screen and (min-width: $widescreen)
+  .form
+    padding-top: 30px
+    padding-bottom: 18px
+
   .form__wrapper
+    position: relative
     width: 790px
+
+    &::after
+      content: ''
+      position: absolute
+      right: -190px
+      bottom: -106px
+      width: 226px
+      height: 210px
+      background: url('../images/form-list.png') no-repeat
+
 
   .customer-form
     input[type='text'],
     input[type='tel']
       width: 250px
       margin-right: 20px
+      margin-bottom: 15px
 
     &__btn
       width: 250px
