@@ -5743,13 +5743,13 @@ p {
       content: '';
       position: absolute;
       top: 13px;
-      width: 700px;
+      width: 800px;
       height: 1px;
       background-color: #c5c8c7; }
     .offices__title::before {
-      right: -735px; }
+      right: -835px; }
     .offices__title::after {
-      left: -735px; }
+      left: -835px; }
   .offices__links {
     margin-bottom: 40px;
     font-size: 1.5rem; }
@@ -5776,9 +5776,9 @@ p {
     .offices__title {
       font-size: 1.875em; }
       .offices__title::before {
-        right: -730px; }
+        right: -830px; }
       .offices__title::after {
-        left: -730px; } }
+        left: -830px; } }
 
 .about-company {
   padding-top: 24px;
