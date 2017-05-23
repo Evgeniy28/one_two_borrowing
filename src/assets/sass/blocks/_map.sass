@@ -63,38 +63,61 @@
   justify-content: center
   align-items: center
 
+.ymaps-2-1-50-balloon__content
+  width: 520px
+
+  ymaps
+    width: auto !important
+
 .map-mark
-  padding: 25px 0 25px 18px
+  display: flex
+  justify-content: space-between
+  padding-top: 30px
+  padding-right: 7px
+  padding-left: 18px
+  padding-bottom: 10px
   font-family: $family-primary
+  color: $black-ter
+
+  &__img
+    width: 120px
+
+  &__wrapper
+    width: 350px
 
   &__adress
     margin: 0
     margin-bottom: 20px
     font-size: 18px
-    font-weight: 300
-    color: #737373
-    text-align: center
+    font-weight: $weight-bold
+
+  &__description
+    margin-bottom: 30px
+    font-size: 16px
+    font-weight: $weight-normal
+    color: $grey
 
   &__phone
     margin: 0
-    // font-size: $h1-font-size
-    font-weight: 500
-    color: #242424
-    text-align: center
+    margin-bottom: 20px
+    font-size: 30px
+    font-weight: $weight-bold
 
   &__button
-    display: block
-    width: 211px
-    height: 49px
-    margin: 0 auto
-    font-size: 18px
-    font-weight: 400
-    border-radius: 2px
+    width: 182px
+    font-size: 15px
+    font-weight: $weight-bold
+    color: $white
+    border-radius: $radius
     background-color: $project-orange
+    box-shadow: 0 -2px #cc6605 inset
     transition: all 0.1s ease-in-out
+    border: none
+    outline: none
 
     &:hover
-      background-color: darken($project-orange, 10%)
+      color: $white
+      background-color: #cc6605
 
 
 // tablet from 769px

@@ -353,6 +353,9 @@ $(function() {
     // Создание макета содержимого балуна.
     BalloonContentLayout = ymaps.templateLayoutFactory.createClass(
       '<div class="map-mark">' +
+        '<div class="map-mark__img">' +
+          '<img src="assets/images/{{ properties.images }}" width="120" height="120">' +
+        '</div>' +
         '<div class="map-mark__wrapper">' +
           '<p class="map-mark__adress">{{ properties.address }}</p>' +
           '<p class="map-mark__description">{{ properties.description }}</p>' +
@@ -391,7 +394,8 @@ $(function() {
       {
         address: 'г. Артём, площадь Ленина, 2',
         description: 'ГУМ, вход с торца, напротив "Кошелки"!',
-        phone: '8-904-627-3974'
+        phone: '8-904-627-3974',
+        images: 'office1-ballloon.jpg'
       }, {
         balloonContentLayout: BalloonContentLayout,
         balloonPanelMaxMapArea: 0,
@@ -403,7 +407,8 @@ $(function() {
       {
         address: 'г. Артём, ул. Октябрьская, д. 4а',
         description: 'Центральная автобусная остановка, "Садильник", в одном здании с салоном Yota!',
-        phone: '8-904-627-3974'
+        phone: '8-904-627-3974',
+        images: 'office2-ballloon.jpg'
       }, {
         balloonContentLayout: BalloonContentLayout,
         balloonPanelMaxMapArea: 0,
