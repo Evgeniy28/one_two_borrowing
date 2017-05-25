@@ -291,14 +291,14 @@ $(function() {
   var element = document.getElementById('slider');
   window.mySwipe = new Swipe(element, {
     startSlide: 0,
-    auto: 3000,
+    auto: 3500,
     draggable: true,
     autoRestart: true,
     continuous: true,
     disableScroll: true,
     stopPropagation: true,
     callback: function(index, element) {
-
+      // console.log(element);
       function isActive(indexElement) {
         var paginationList = document.querySelector('.slider-pagination .slider-pagination__list');
         if (indexElement == 0) {
@@ -314,6 +314,30 @@ $(function() {
     },
     transitionEnd: function(index, element) {}
   });
+
+  // Change slider on click
+  function set_handler(i) {
+    return function (e) {
+      var currentSlide = mySwipe.getPos();
+      var links = $('.slider-pagination__list').find('.slider-pagination__link');
+      links[currentSlide].classList.remove('is-active-slide');
+      links[i].classList.add('is-active-slide');
+      mySwipe.slide(i);
+    };
+  };
+
+  function handlePaginationLink() {
+    var links = $('.slider-pagination__list').find('.slider-pagination__link');
+    i = 0;
+    var countLinks = links.length;
+    while (i < countLinks) {
+      links[i].addEventListener('click', set_handler(i), false);
+      i++;
+    }
+  };
+
+  handlePaginationLink();
+
 });
 
 /// MAPS SECTION ///
@@ -349,6 +373,9 @@ $(function() {
     }, {
       searchControlProvider: 'yandex#search'
     });
+
+    map1.behaviors.disable('scrollZoom');
+    map2.behaviors.disable('scrollZoom');
 
     // Создание макета содержимого балуна.
     BalloonContentLayout = ymaps.templateLayoutFactory.createClass(
@@ -416,7 +443,10 @@ $(function() {
         iconColor: '#28aa3a'
     });
 
+
     map1.geoObjects.add(placemark1);
     map2.geoObjects.add(placemark2);
+
+    placemark1.balloon.open();
   });
 });
