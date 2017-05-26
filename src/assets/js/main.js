@@ -299,15 +299,14 @@ $(function() {
     disableScroll: true,
     stopPropagation: true,
     callback: function(index, element) {
-      // console.log(element);
-      function isActive(indexElement) {
-        var paginationList = document.querySelector('.slider-pagination .slider-pagination__list');
-        if (indexElement == 0) {
-          paginationList.children[indexElement].classList.add('is-active-slide');
-          paginationList.children[3].classList.remove('is-active-slide');
+      function isActive(i) {
+        var paginationList = document.querySelector('.slider-pagination .slider-pagination__list').children;
+        if (i == 0) {
+          paginationList[i].classList.add('is-active-slide');
+          paginationList[3].classList.remove('is-active-slide');
         } else {
-          paginationList.children[indexElement].classList.add('is-active-slide');
-          paginationList.children[indexElement - 1].classList.remove('is-active-slide');
+          paginationList[i].classList.add('is-active-slide');
+          paginationList[i - 1].classList.remove('is-active-slide');
         }
       };
       isActive(index);
@@ -343,61 +342,20 @@ $(function() {
 
 /// MAPS SECTION ///
 $(function() {
-  function watchOfficeMap(currentButton, currentOfficeId, currentMap, otherButton, otherOfficeId, otherMap) {
-    $(currentButton).on('click', function(e) {
-      e.preventDefault();
-
-      $('.offices__links ' + currentButton).addClass('is-active-office');
-      $('.offices__links ' + otherButton).removeClass('is-active-office');
-
-      $(currentOfficeId).removeClass('none-js');
-      $(otherOfficeId).addClass('none-js');
-
-      $(currentMap).removeClass('none-js');
-      $(otherMap).addClass('none-js');
-    });
-  };
-  watchOfficeMap('.lenina-squire', '#office1', '#yandex-map1','.october', '#office2', '#yandex-map2');
-  watchOfficeMap('.october', '#office2', '#yandex-map2','.lenina-squire', '#office1', '#yandex-map1');
-
-  // Close Modal Office image
-  function closeModalOffice(classOffice) {
-    $(classOffice + ' .modal-close').on('click', function(e) {
-      $(classOffice).removeClass('is-active');
-    });
-  };
-
-  closeModalOffice('.image__office1');
-  closeModalOffice('.image__office2');
-
-  function hideModalOffice(classOffice) {
-    if ($(classOffice).hasClass('is-active')) {
-      $(classOffice).removeClass('is-active');
-    }
-  };
-
-  function closeModalOfficeEsc(classOffice) {
-    $(window).on('keydown', function(e) {
-      if (e.keyCode === 27) {
-        hideModalOffice(classOffice);
-      }
-    });
-  };
-  closeModalOfficeEsc('.image__office1');
-  closeModalOfficeEsc('.image__office2');
-
   // Create yandex maps
   ymaps.ready(function () {
     var map1 = new ymaps.Map('yandex-map1', {
       center: [43.355302, 132.179872],
-      zoom: 18
+      zoom: 18,
+      controls: ['zoomControl']
     }, {
       searchControlProvider: 'yandex#search'
     });
 
     var map2 = new ymaps.Map('yandex-map2', {
       center: [43.354305, 132.186286],
-      zoom: 18
+      zoom: 18,
+      controls: ['zoomControl']
     }, {
       searchControlProvider: 'yandex#search'
     });
@@ -409,7 +367,7 @@ $(function() {
     BalloonContentLayout = ymaps.templateLayoutFactory.createClass(
       '<div class="map-mark">' +
         '<div class="map-mark__img">' +
-          '<img src="assets/images/{{ properties.images }}" width="120" height="120">' +
+          '<img src="assets/images/{{ properties.images }}" width="120" height="120" alt="">' +
         '</div>' +
         '<div class="map-mark__wrapper">' +
           '<p class="map-mark__adress">{{ properties.address }}</p>' +
@@ -486,5 +444,60 @@ $(function() {
     map2.geoObjects.add(placemark2);
 
     placemark1.balloon.open();
+
+    // Switching maps
+    function watchOfficeMap(currentButton, currentOfficeId, currentMap, otherButton, otherOfficeId, otherMap) {
+      $(currentButton).on('click', function(e) {
+        e.preventDefault();
+
+        $('.offices__links ' + currentButton).addClass('is-active-office');
+        $('.offices__links ' + otherButton).removeClass('is-active-office');
+
+        $(currentOfficeId).removeClass('none-js');
+        $(otherOfficeId).addClass('none-js');
+
+        $(currentMap).removeClass('none-js');
+        $(otherMap).addClass('none-js');
+
+        if (currentButton == '.october') {
+          console.log('open baloon october');
+          placemark2.balloon.open();
+          map2.setCenter([43.354305, 132.186286]);
+        } else {
+          console.log('open baloon lenina');
+          placemark1.balloon.open();
+          map1.setCenter([43.355302, 132.179872]);
+        }
+
+      });
+    };
+    watchOfficeMap('.lenina-squire', '#office1', '#yandex-map1','.october', '#office2', '#yandex-map2');
+    watchOfficeMap('.october', '#office2', '#yandex-map2','.lenina-squire', '#office1', '#yandex-map1');
+
+    // Close image of office
+    function closeModalOffice(classOffice) {
+      $(classOffice + ' .modal-close').on('click', function(e) {
+        $(classOffice).removeClass('is-active');
+      });
+    };
+
+    closeModalOffice('.image__office1');
+    closeModalOffice('.image__office2');
+
+    function hideModalOffice(classOffice) {
+      if ($(classOffice).hasClass('is-active')) {
+        $(classOffice).removeClass('is-active');
+      }
+    };
+
+    function closeModalOfficeEsc(classOffice) {
+      $(window).on('keydown', function(e) {
+        if (e.keyCode === 27) {
+          hideModalOffice(classOffice);
+        }
+      });
+    };
+    closeModalOfficeEsc('.image__office1');
+    closeModalOfficeEsc('.image__office2');
   });
 });

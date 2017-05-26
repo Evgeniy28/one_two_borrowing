@@ -45,6 +45,7 @@
         height: 3px
         background-color: $project-orange
 
+///////////////// Maps, Baloon ///////////
 .map
   background: #e9e5dc url('../images/map1.png') no-repeat
   background-position: center
@@ -53,57 +54,58 @@
   // helper
   +outline-red
 
-#yandex-map1,
-#yandex-map2
-  display: none
-  height: inherit
+  #yandex-map1,
+  #yandex-map2
+    height: 500px
 
-.visible-phone
-  display: flex
-  justify-content: center
-  align-items: center
+
+// Yandex Baloon //
 
 .ymaps-2-1-50-balloon__content
-  width: 520px
+  width: 250px
 
   ymaps
     width: auto !important
 
 .map-mark
   display: flex
-  justify-content: space-between
-  padding-top: 30px
+  flex-direction: column
+  padding-top: 5px
   padding-right: 7px
-  padding-left: 18px
-  padding-bottom: 10px
+  padding-left: 14px
+  padding-bottom: 5px
   font-family: $family-primary
   color: $black-ter
 
   &__img
     width: 120px
-
-  &__wrapper
-    width: 350px
+    margin: 0 auto
+    margin-bottom: 20px
 
   &__adress
     margin: 0
-    margin-bottom: 20px
-    font-size: 18px
+    margin-bottom: 10px
+    font-size: 16px
     font-weight: $weight-bold
+    text-align: center
 
   &__description
-    margin-bottom: 30px
-    font-size: 16px
+    margin-bottom: 25px
+    font-size: 12px
     font-weight: $weight-normal
     color: $grey
+    text-align: center
 
   &__phone
     margin: 0
-    margin-bottom: 20px
-    font-size: 30px
+    margin-bottom: 15px
+    font-size: 23px
     font-weight: $weight-bold
+    text-align: center
 
   &__button
+    display: block
+    margin: 0 auto
     width: 182px
     font-size: 15px
     font-weight: $weight-bold
@@ -118,6 +120,8 @@
     &:hover
       color: $white
       background-color: #cc6605
+
+// End Yandex Baloon //
 
 
 // tablet from 769px
@@ -158,15 +162,45 @@
         width: 140px
         margin-left: -70px
 
-  .map
-    height: 500px
+  // Yandex Baloon //
+  .ymaps-2-1-50-balloon__content
+    width: 520px
 
-  .visible-phone
-    display: none
+    ymaps
+      width: auto !important
 
-  #yandex-map1,
-  #yandex-map2
-    display: block
+  .map-mark
+    flex-direction: row
+    justify-content: space-between
+    padding-top: 30px
+    padding-left: 18px
+    padding-bottom: 10px
+
+    &__img
+      margin-left: 0
+
+    &__wrapper
+      width: 350px
+
+    &__adress
+      margin-bottom: 20px
+      font-size: 18px
+      text-align: left
+
+    &__description
+      margin-bottom: 30px
+      font-size: 16px
+      text-align: left
+
+    &__phone
+      margin-bottom: 20px
+      font-size: 30px
+      text-align: left
+
+    &__button
+      margin-left: 0
+
+  // End Yandex Baloon //
 
 // widescreen from 1192px
 @media screen and (min-width: $widescreen)
