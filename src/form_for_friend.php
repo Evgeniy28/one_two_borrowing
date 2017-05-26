@@ -18,11 +18,11 @@
     $form_data['success'] = false;
     $form_data['errors']  = $errors;
   } else {
-    $message = "<h4>Заявка с сайта ".$_SERVER['HTTP_HOST']."</h4><p>Перезвонить другу</p>";
+    $message = "<h4>Заявка с сайта ".$_SERVER['HTTP_HOST']."</h4><p>Перезвонить другу:</p>";
+    $message .= "Имя друга: ".$_POST['name']."<br />";
+    $message .= "Телефон друга: ".$_POST['tel']."<br />";
+    $message .= "Моё имя: ".$_POST['your_name']."<br />";
 
-    foreach($_POST as $k => $v) {
-      $message .= $k.": ".$v."<br />";
-    }
 
     $headers  = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=utf8' . "\r\n";
