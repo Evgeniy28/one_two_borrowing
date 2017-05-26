@@ -96,9 +96,8 @@ $(function() {
       phone.classList.remove('is-danger');
       checkboxText.classList.add('errors-text');
     } else {
-      console.log('ajax');
-      console.log($(name).val());
-      console.log($(phone).val());
+
+      $('.form-for-me .modal-form__btn').addClass('is-loading');
 
       var postForm = {
         'name' : $(name).val(),
@@ -113,12 +112,14 @@ $(function() {
         success  : function(data) {
           if (!data.success) {
             if (data.errors.name) {
-              console.log('errors', data.errors.name);
               addFormAnimationError('.form-for-me');
               $('.form-for-me .form-errors').fadeIn(1000).html(data.errors.name);
             }
           } else {
-            $('.form-for-me .modal-form__title').fadeIn(1000).html("<p class=\"modal-form__title success-text\">" + data.posted + "</p>");
+            $('.form-for-me .modal-form__title').html(data.posted);
+            $('.form-for-me .modal-form__title').addClass('success-text');
+            $('.form-for-me input').val('');
+            $('.form-for-me .modal-form__btn').removeClass('is-loading');
           }
         }
       });
@@ -153,10 +154,8 @@ $(function() {
       yourName.classList.remove('is-danger');
       checkboxText.classList.add('errors-text');
     } else {
-      console.log('ajax');
-      console.log($(name).val());
-      console.log($(phone).val());
-      console.log($(yourName).val());
+
+      $('.form-for-friend .modal-form__btn').addClass('is-loading');
 
       var postForm = {
         'name'      : $(name).val(),
@@ -172,12 +171,14 @@ $(function() {
         success  : function(data) {
           if (!data.success) {
             if (data.errors.name) {
-              console.log('errors', data.errors.name);
               addFormAnimationError('.form-for-friend');
               $('.form-for-friend .form-errors').fadeIn(1000).html(data.errors.name);
             }
           } else {
-            $('.form-for-friend .modal-form__title').fadeIn(1000).html("<p class=\"modal-form__title success-text\">" + data.posted + "</p>");
+            $('.form-for-friend .modal-form__title').html(data.posted);
+            $('.form-for-friend .modal-form__title').addClass('success-text');
+            $('.form-for-friend input').val('');
+            $('.form-for-friend .modal-form__btn').removeClass('is-loading');
           }
         }
       });
@@ -205,9 +206,8 @@ $(function() {
       phone.classList.remove('is-danger');
       checkboxText.classList.add('errors-text');
     } else {
-      console.log('ajax');
-      console.log($(name).val());
-      console.log($(phone).val());
+
+      $('.customer-form .customer-form__btn').addClass('is-loading');
 
       var postForm = {
         'name' : $(name).val(),
@@ -222,12 +222,11 @@ $(function() {
         success  : function(data) {
           if (!data.success) {
             if (data.errors.name) {
-              console.log('errors', data.errors.name);
-              addFormAnimationError('.form-js');
               $('.customer-form .form-errors').fadeIn(1000).html(data.errors.name);
+              $('.customer-form').fadeIn(1000).html('<p style="color: hsl(348, 100%, 61%);">' + data.errors.name + '</p>');
             }
           } else {
-            $('.customer-form').fadeIn(1000).html('<p>' + data.posted + '</p>');
+            $('.customer-form').fadeIn(1000).html('<p style="color: hsl(348, 100%, 61%);">' + data.posted + '</p>');
           }
         }
       });
