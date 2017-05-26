@@ -29,8 +29,8 @@ $(function() {
   function openModalForm(classButton, classForm) {
     $(classButton).on('click', function(e) {
       e.preventDefault();
-      $('.modal').addClass('is-active');
-      $(classForm).addClass('is-form-show');
+      $(classForm).addClass('is-active');
+      // $(classForm).addClass('is-form-show');
     });
   };
   openModalForm('.header-callback__btn', '.form-for-me');
@@ -41,9 +41,9 @@ $(function() {
 
   // Close Modal Form
   function hideModalForm(classForm) {
-    if ($('.modal').hasClass('is-active')) {
-      $('.modal').removeClass('is-active');
-      $(classForm).removeClass('is-form-show');
+    if ($(classForm).hasClass('is-active')) {
+      $(classForm).removeClass('is-active');
+      // $(classForm).removeClass('is-form-show');
       $(classForm + ' input').removeClass('is-danger');
     }
   };
@@ -54,8 +54,8 @@ $(function() {
       hideModalForm(classForm);
     });
   };
-  closeModalFormBtn('.form-for-me form');
-  closeModalFormBtn('.form-for-friend form');
+  closeModalFormBtn('.form-for-me');
+  closeModalFormBtn('.form-for-friend');
 
   function closeModalFormEsc(classForm) {
     $(window).on('keydown', function(e) {
@@ -64,14 +64,14 @@ $(function() {
       }
     });
   };
-  closeModalFormEsc('.form-for-me form');
-  closeModalFormEsc('.form-for-friend form');
+  closeModalFormEsc('.form-for-me');
+  closeModalFormEsc('.form-for-friend');
 
   /// SEND AJAX FORMS ///
   function addFormAnimationError(classForm) {
-    $(classForm).addClass('modal-error');
+    $(classForm + ' form').addClass('modal-error');
     setTimeout(function() {
-      $(classForm).removeClass('modal-error');
+      $(classForm  + ' form').removeClass('modal-error');
     }, 1500);
   };
 
@@ -193,14 +193,14 @@ $(function() {
     e.preventDefault();
 
     if (!name.value) {
-      addFormAnimationError('.customer-form');
+      addFormAnimationError('.form-js');
       name.classList.add('is-danger');
     } else if (!phone.value) {
-      addFormAnimationError('.customer-form');
+      addFormAnimationError('.form-js');
       name.classList.remove('is-danger');
       phone.classList.add('is-danger');
     } else if (!checkbox.checked) {
-      addFormAnimationError('.customer-form');
+      addFormAnimationError('.form-js');
       name.classList.remove('is-danger');
       phone.classList.remove('is-danger');
       checkboxText.classList.add('errors-text');
@@ -222,6 +222,8 @@ $(function() {
         success  : function(data) {
           if (!data.success) {
             if (data.errors.name) {
+              console.log('errors', data.errors.name);
+              addFormAnimationError('.form-js');
               $('.customer-form .form-errors').fadeIn(1000).html(data.errors.name);
             }
           } else {
@@ -359,6 +361,33 @@ $(function() {
   watchOfficeMap('.lenina-squire', '#office1', '#yandex-map1','.october', '#office2', '#yandex-map2');
   watchOfficeMap('.october', '#office2', '#yandex-map2','.lenina-squire', '#office1', '#yandex-map1');
 
+  // Close Modal Office image
+  function closeModalOffice(classOffice) {
+    $(classOffice + ' .modal-close').on('click', function(e) {
+      $(classOffice).removeClass('is-active');
+    });
+  };
+
+  closeModalOffice('.image__office1');
+  closeModalOffice('.image__office2');
+
+  function hideModalOffice(classOffice) {
+    if ($(classOffice).hasClass('is-active')) {
+      $(classOffice).removeClass('is-active');
+    }
+  };
+
+  function closeModalOfficeEsc(classOffice) {
+    $(window).on('keydown', function(e) {
+      if (e.keyCode === 27) {
+        hideModalOffice(classOffice);
+      }
+    });
+  };
+  closeModalOfficeEsc('.image__office1');
+  closeModalOfficeEsc('.image__office2');
+
+  // Create yandex maps
   ymaps.ready(function () {
     var map1 = new ymaps.Map('yandex-map1', {
       center: [43.355302, 132.179872],
@@ -398,6 +427,7 @@ $(function() {
           BalloonContentLayout.superclass.build.call(this);
           // А затем выполняем дополнительные действия.
           $('.call-me-office').bind('click', this.openModalFromMap);
+          $('.map-mark__img').bind('click', this.openModalOffice);
         },
 
         // Аналогично переопределяем функцию clear, чтобы снять
@@ -406,13 +436,22 @@ $(function() {
           // Выполняем действия в обратном порядке - сначала снимаем слушателя,
           // а потом вызываем метод clear родительского класса.
           $('.call-me-office').unbind('click', this.openModalFromMap);
+          $('.map-mark__img').unbind('click', this.openModalOffice);
           BalloonContentLayout.superclass.clear.call(this);
         },
 
         openModalFromMap: function (e) {
           e.preventDefault();
-          $('.modal').addClass('is-active');
-          $('.form-for-me').addClass('is-form-show');
+          $('.form-for-me').addClass('is-active');
+        },
+
+        openModalOffice: function (e) {
+          e.preventDefault();
+          if ($('.lenina-squire').hasClass('is-active-office')) {
+            $('.image__office1').addClass('is-active')
+          } else {
+            $('.image__office2').addClass('is-active');
+          }
         }
       }
     );
