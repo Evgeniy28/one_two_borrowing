@@ -14,6 +14,8 @@
     font-size: 1.125em
     text-align: center
     color: $black-ter
+    //helper
+    +outline-black
 
   &__btn
     width: 100%
@@ -68,22 +70,30 @@
       margin-right: 0
 
 .slider
-  margin-bottom: 15px
+  width: 100%
+  margin-bottom: 7px
   padding-top: 20px
   // helper
   +outline-red
 
   &__img
     display: flex
-    justify-content: center
+    flex-direction: column
     // helper
     +outline-blue
+
+    img
+      margin: 0 auto
 
     &:hover
       cursor: pointer
 
   &__img-wrapper
-    +clearfix
+    // +clearfix
+
+  &__text
+    padding-top: 40px
+
 
 .is-active-slide
   background-color: $project-orange
@@ -214,6 +224,12 @@
     .is-active-slide
       background-color: #28aa3a
 
+  .slider
+    margin-bottom: 40px
+
+    &__text
+      padding-top: 50px
+
 // widescreen from 1192px
 @media screen and (min-width: $widescreen)
   .recomendation
@@ -238,3 +254,9 @@
       width: 92px
       height: 91px
       background: url('../images/recomendation-list.png') no-repeat
+
+  .slider
+    margin-bottom: 50px
+
+    &__text
+      padding-top: 55px

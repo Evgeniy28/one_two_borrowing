@@ -278,7 +278,7 @@ $(function() {
   // Recomendation
   sr.reveal('.recomendation__title', top);
   sr.reveal('.recomendation__text', bottomFast);
-  sr.reveal('.slider', bottomFast);
+  // sr.reveal('.slider'); // смещает слайдер
   sr.reveal('.button-wrapper', bottomFast);
 
   // About company
