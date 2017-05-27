@@ -27,12 +27,32 @@
 
   &__checkbox
     margin-bottom: 30px
+    cursor: pointer
     // helper
     +outline-blue
 
+    input
+      display: none
+
+    input:checked + .customer-form__checkbox-text::before
+      background: $white url('../images/check.png') no-repeat 3px center
+
   &__checkbox-text
-    padding-left: 18px
+    position: relative
+    display: block
+    margin-bottom: 25px
+    padding-left: 36px
     color: $white
+
+    &::before
+      content: ''
+      position: absolute
+      top: 3px
+      left: 0
+      width: 18px
+      height: 18px
+      border-radius: 3px
+      background-color: $white
 
   &__btn
     width: 100%
@@ -64,6 +84,9 @@
     input[type='tel']
       width: 210px
       margin-right: 15px
+
+    &__checkbox-text
+      margin-bottom: 0
 
     &__btn
       margin-bottom: 23px

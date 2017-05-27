@@ -60,13 +60,31 @@
     margin-bottom: 35px
     padding-top: 5px
     font-size: 0.875em
-
+    cursor: pointer
     // helper
     +outline-blue
 
+    input
+      display: none
+
+    input:checked + .modal-form__checkbox-text::before
+      background: $white url('../images/check.png') no-repeat 1px center
+
   &__checkbox-text
-      padding-left: 9px
-      color: $grey
+    position: relative
+    padding-left: 24px
+    color: $grey
+
+    &::before
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      width: 15px
+      height: 15px
+      border-radius: 3px
+      border: 1px solid #959595
+      background-color: $white
 
   &__btn
     width: 250px

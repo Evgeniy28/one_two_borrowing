@@ -25,12 +25,15 @@ $(function() {
   // Mask for number phone
   $('[name=tel]').mask('+7(999) 999-99-99');
 
+  // Set checked checkbox
+  $( '.customer-form__checkbox input' ).prop( 'checked', true );
+
   // Open Modal Form
   function openModalForm(classButton, classForm) {
     $(classButton).on('click', function(e) {
       e.preventDefault();
       $(classForm).addClass('is-active');
-      // $(classForm).addClass('is-form-show');
+      $( classForm + ' .modal-form__checkbox input' ).prop( 'checked', true );
     });
   };
   openModalForm('.header-callback__btn', '.form-for-me');
@@ -43,7 +46,6 @@ $(function() {
   function hideModalForm(classForm) {
     if ($(classForm).hasClass('is-active')) {
       $(classForm).removeClass('is-active');
-      // $(classForm).removeClass('is-form-show');
       $(classForm + ' input').removeClass('is-danger');
     }
   };
@@ -428,6 +430,7 @@ $(function() {
         openModalFromMap: function (e) {
           e.preventDefault();
           $('.form-for-me').addClass('is-active');
+          $('.form-for-me .modal-form__checkbox input' ).prop( 'checked', true );
         },
 
         openModalOffice: function (e) {
