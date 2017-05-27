@@ -5,7 +5,7 @@
   +outline-red
 
   &__title
-    padding-bottom: 26px
+    margin-bottom: 26px
     font-size: 1.3125em
     font-weight: $weight-bold
     text-align: center
@@ -129,22 +129,20 @@
   .offices
     &__title
       position: relative
-      width: 360px
-      margin: 0 auto
-      padding-bottom: 49px
+      margin-bottom: 49px
       font-size: 1.625em
       &::before,
       &::after
         content: ''
         position: absolute
-        top: 13px
-        width: 800px
+        top: 50%
+        width: 400px
         height: 1px
         background-color: #c5c8c7
       &::before
-        right: -835px
+        right: -245px
       &::after
-        left: -835px
+        left: -245px
 
     &__links
       margin-bottom: 40px
@@ -209,7 +207,10 @@
 
     &__title
       font-size: 1.875em
-      &::before
-        right: -830px
+      &::before,
       &::after
-        left: -830px
+        width: 800px
+      &::before
+        right: -425px
+      &::after
+        left: -425px
