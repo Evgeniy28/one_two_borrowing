@@ -69,6 +69,31 @@ $(function() {
   closeModalFormEsc('.form-for-me');
   closeModalFormEsc('.form-for-friend');
 
+  function closeModalFormAround(classForm) {
+    $(classForm + ' .modal-background').on('click', function(e) {
+      var form = $(classForm + ' .modal-form');
+
+      if (!form.is(e.target) && form.has(e.target).length === 0) {
+        $(classForm).removeClass('is-active');
+        $(classForm + ' input').removeClass('is-danger');
+      }
+    });
+  };
+  closeModalFormAround('.form-for-me');
+  closeModalFormAround('.form-for-friend');
+
+  function closeModalImageAround(classOffice) {
+    $(classOffice + ' .modal-background').on('click', function(e) {
+      var content = $(classOffice + ' .modal-content');
+
+      if (!content.is(e.target) && content.has(e.target).length === 0) {
+        $(classOffice).removeClass('is-active');
+      }
+    });
+  };
+  closeModalImageAround('.image__office1');
+  closeModalImageAround('.image__office2');
+
   /// SEND AJAX FORMS ///
   function addFormAnimationError(classForm) {
     $(classForm + ' form').addClass('modal-error');
