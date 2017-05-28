@@ -38,7 +38,7 @@ gulp.task 'build:css', ->
     .pipe postcss([ autoprefixer() ])
     .pipe gulp.dest paths.css
     .pipe do csso
-    .pipe rename suffix: '_v0.3.min'
+    .pipe rename suffix: '_v0.4.min'
   	.pipe gulp.dest paths.css
     .pipe do connect.reload
 
@@ -66,7 +66,7 @@ gulp.task 'minify:html', ->
 gulp.task 'minify:js', ->
   gulp.src paths.src_js + '*.js'
   	.pipe do uglify
-    .pipe rename suffix: '_v0.3.min'
+    .pipe rename suffix: '_v0.4.min'
     .pipe gulp.dest paths.js
     .pipe do connect.reload
 
