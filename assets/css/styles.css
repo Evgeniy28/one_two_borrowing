@@ -5158,11 +5158,11 @@ p {
     padding-right: 16px;
     font-size: 0.875em;
     line-height: 36px;
-    text-decoration: underline;
+    text-decoration: none;
     color: #7a7a7a; }
     .header__navigation-link:hover {
       cursor: pointer;
-      text-decoration: none; }
+      text-decoration: underline; }
     .header__navigation-link::before {
       content: '';
       position: absolute;
@@ -5333,13 +5333,12 @@ p {
     position: relative;
     padding-top: 15px;
     padding-bottom: 0; }
-    .information::before {
-      z-index: 10;
+    .information .bg::before {
       content: '';
       position: absolute;
-      left: 0px;
-      top: -109px;
-      width: 1192px;
+      left: -231px;
+      top: -124px;
+      width: 1200px;
       height: 433px;
       background: url("../images/bg-info-form-tablet.png") no-repeat; }
     .information__info {
@@ -5347,11 +5346,9 @@ p {
       font-size: 0.8125em; } }
 
 @media screen and (min-width: 1192px) {
-  .information::before {
-    content: '';
-    position: absolute;
-    left: 0px;
-    top: -161px;
+  .information .bg::before {
+    left: -375px;
+    top: -175px;
     width: 1920px;
     height: 459px;
     background: url("../images/bg-info-form-desktop.png") no-repeat; }
@@ -5363,46 +5360,63 @@ p {
   padding-bottom: 40px;
   background-color: #1f8f2f; }
 
-.customer-form input[type='text'],
-.customer-form input[type='tel'] {
-  width: 100%;
-  height: 39px;
-  margin-bottom: 20px;
-  padding-left: 23px;
-  border-radius: 3px;
-  border: 1px solid white;
-  outline: none; }
-  .customer-form input[type='text']::-webkit-input-placeholder,
-  .customer-form input[type='tel']::-webkit-input-placeholder {
-    font-family: "Etelka", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-    font-size: 1.125em;
-    font-weight: 700;
-    color: #242424; }
-  .customer-form input[type='text']:-ms-input-placeholder,
-  .customer-form input[type='tel']:-ms-input-placeholder {
-    font-family: "Etelka", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-    font-size: 1.125em;
-    font-weight: 700;
-    color: #242424; }
-  .customer-form input[type='text']::placeholder,
-  .customer-form input[type='tel']::placeholder {
-    font-family: "Etelka", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-    font-size: 1.125em;
-    font-weight: 700;
-    color: #242424; }
-
-.customer-form__checkbox {
-  margin-bottom: 30px; }
-
-.customer-form__checkbox-text {
-  padding-left: 18px;
-  color: white; }
-
-.customer-form__btn {
-  width: 100%;
-  height: 39px; }
-  .customer-form__btn:hover {
-    background-color: #242424 !important; }
+.customer-form {
+  position: relative;
+  z-index: 10; }
+  .customer-form input[type='text'],
+  .customer-form input[type='tel'] {
+    width: 100%;
+    height: 39px;
+    margin-bottom: 20px;
+    padding-left: 23px;
+    border-radius: 3px;
+    border: 1px solid white;
+    outline: none; }
+    .customer-form input[type='text']::-webkit-input-placeholder,
+    .customer-form input[type='tel']::-webkit-input-placeholder {
+      font-family: "Etelka", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+      font-size: 1.125em;
+      font-weight: 700;
+      color: #242424; }
+    .customer-form input[type='text']:-ms-input-placeholder,
+    .customer-form input[type='tel']:-ms-input-placeholder {
+      font-family: "Etelka", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+      font-size: 1.125em;
+      font-weight: 700;
+      color: #242424; }
+    .customer-form input[type='text']::placeholder,
+    .customer-form input[type='tel']::placeholder {
+      font-family: "Etelka", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+      font-size: 1.125em;
+      font-weight: 700;
+      color: #242424; }
+  .customer-form__checkbox {
+    margin-bottom: 30px;
+    cursor: pointer; }
+    .customer-form__checkbox input {
+      display: none; }
+    .customer-form__checkbox input:checked + .customer-form__checkbox-text::before {
+      background: white url("../images/check.png") no-repeat 3px center; }
+  .customer-form__checkbox-text {
+    position: relative;
+    display: block;
+    margin-bottom: 25px;
+    padding-left: 36px;
+    color: white; }
+    .customer-form__checkbox-text::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 3px;
+      background-color: white; }
+  .customer-form__btn {
+    width: 100%;
+    height: 39px; }
+    .customer-form__btn:hover {
+      background-color: #242424 !important; }
 
 @media screen and (min-width: 769px) {
   .form {
@@ -5430,6 +5444,8 @@ p {
     .customer-form input[type='tel'] {
       width: 210px;
       margin-right: 15px; }
+    .customer-form__checkbox-text {
+      margin-bottom: 0; }
     .customer-form__btn {
       margin-bottom: 23px;
       width: 210px; } }
@@ -6064,13 +6080,13 @@ p {
       margin-right: 25px;
       padding-right: 16px;
       font-size: 0.875em;
-      text-decoration: underline;
+      text-decoration: none;
       color: #0a0a0a; }
       .footer__navigation-link:last-child {
         margin-right: 0; }
       .footer__navigation-link:hover {
         cursor: pointer;
-        text-decoration: none; }
+        text-decoration: underline; }
       .footer__navigation-link::before {
         content: '';
         position: absolute;
@@ -6266,10 +6282,26 @@ p {
   .modal-form__checkbox {
     margin-bottom: 35px;
     padding-top: 5px;
-    font-size: 0.875em; }
+    font-size: 0.875em;
+    cursor: pointer; }
+    .modal-form__checkbox input {
+      display: none; }
+    .modal-form__checkbox input:checked + .modal-form__checkbox-text::before {
+      background: white url("../images/check.png") no-repeat 1px center; }
   .modal-form__checkbox-text {
-    padding-left: 9px;
+    position: relative;
+    padding-left: 24px;
     color: #7a7a7a; }
+    .modal-form__checkbox-text::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 15px;
+      height: 15px;
+      border-radius: 3px;
+      border: 1px solid #959595;
+      background-color: white; }
   .modal-form__btn {
     width: 250px;
     margin-bottom: 25px;
